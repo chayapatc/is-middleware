@@ -4,7 +4,15 @@ module.exports = function(OrderService, InventoryService) {
 
 		create: function(req, res) {
 			
-			return res.json({});
+			OrderService.create(req.body)
+				.then(function() {
+					return InventoryService.remove();
+				})
+				.then(function(result) {
+					return res.json(result);
+				}, function(error) {
+					return res.status(500).json(error);					
+				});
 		}
 
 	};

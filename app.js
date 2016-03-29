@@ -10,9 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(cors());
 
 // services
-var OrderService = require('./services/OrderService.js')();
-var InventoryService = require('./services/InventoryService.js')();
-var ProductService = require('./services/ProductService.js')();
+var OrderService = require('./services/OrderService.js')(config);
+var InventoryService = require('./services/InventoryService.js')(config);
+var ProductService = require('./services/ProductService.js')(config);
 
 // controllers
 var OrderController = require('./controllers/OrderController.js')(OrderService, InventoryService);
