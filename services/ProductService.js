@@ -1,5 +1,5 @@
 var request = require('request');
-var Promise = require('Promise');
+var Promise = require('bluebird');
 
 module.exports = function(config) {
 

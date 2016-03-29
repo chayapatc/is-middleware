@@ -1,5 +1,5 @@
 var request = require('request');
-var Promise = require('Promise');
+var Promise = require('bluebird');
 
 module.exports = function(config) {
 
@@ -9,7 +9,6 @@ module.exports = function(config) {
 
 			return new Promise(function(resolve, reject) {
 				var options = {
-					method: 'post',
 					body: order,
 					json: true
 				};

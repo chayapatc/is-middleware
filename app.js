@@ -15,16 +15,19 @@ var InventoryService = require('./services/InventoryService.js')(config);
 var ProductService = require('./services/ProductService.js')(config);
 
 // controllers
+var StockController = require('./controllers/StockController.js')(InventoryService);
 var OrderController = require('./controllers/OrderController.js')(OrderService, InventoryService);
 var CategoryController = require('./controllers/CategoryController.js')(ProductService);
 var ProductController = require('./controllers/ProductController.js')(ProductService);
 
 
+app.post('/stock/add', StockController.add);
+app.post('/stock/remove', StockController.remove);
+
 app.post('/order', OrderController.create);
 app.get('/order', OrderController.find);
 
 app.get('/category', CategoryController.find);
-
 app.get('/product', ProductController.find);
 app.get('/product/:id', ProductController.findById);
 
