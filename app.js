@@ -21,6 +21,7 @@ var ProductController = require('./controllers/ProductController.js')(ProductSer
 
 
 app.post('/order', OrderController.create);
+app.get('/order', OrderController.find);
 
 app.get('/category', CategoryController.find);
 
